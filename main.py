@@ -38,10 +38,15 @@ if taskExecute is not None:
     doRandomTest = True if input('Провести тестирование случайными величинами (1 - да, 0 - нет): ') == '1' else False
     if doRandomTest:
         print(f'\nБудет произведено тестирование задачи <{taskNumber}> 10-ю случайными условиями.')
-        if taskNumber == 1:
+        if taskExecute == tasks.doTask_6_8:
             for i in range(1, 11): taskExecute(random.randint(1, 100))
         else:
             for i in range(1, 11):
-                taskExecute(int(''.join(str(random.randint(0, 9)) for item in range(1, 11))))
+                nValue = int(''.join(str(random.randint(0, 9)) for item in range(1, 17)))
+                if taskExecute == tasks.doTask_6_23_a \
+                        or taskExecute == tasks.doTask_6_23_v:
+                    taskExecute(nValue, random.randint(0, 9))
+                else:
+                    taskExecute(nValue)
     else:
         taskExecute()
